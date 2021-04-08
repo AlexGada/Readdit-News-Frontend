@@ -1,0 +1,146 @@
+:root {
+  --ff-primary: "Roboto", sans-serif;
+  --ff-secondary: "Open Sans", sans-serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.25rem;
+  --radius: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--ff-secondary);
+  background: var(--clr-white);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+img:not(.nav-logo) {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  font-family: var(--ff-primary);
+}
+h1 {
+  font-size: 3rem;
+  color: orange;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+  color: var(--clr-grey-5);
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 4rem;
+    color: orange;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/* Mobile First */
+.App {
+  text-align: center;
+  border: 4px rgb(224, 155, 25) solid;
+  height: 100%;
+  display: grid;
+  grid-template: 0.5fr 0.5fr 8fr / 1fr;
+  grid-template-areas:
+    "title"
+    "nav"
+    "content";
+}
+
+.Title {
+  border: 4px rgb(133, 169, 223) solid;
+  grid-area: title;
+  background-color: orange;
+}
+.Title-header {
+  color: white;
+}
+
+.Nav {
+  border: 4px rgb(173, 87, 147) solid;
+  grid-area: nav;
+  padding: 5px;
+  background-color: rgb(184, 241, 255);
+}
+.navLink {
+  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Content {
+  border: 4px rgb(46, 167, 72) solid;
+  grid-area: content;
+}
+.ArticleCard {
+  border-bottom: 4px orange solid;
+}
+/* Media Query */
+@media only screen and (min-width: 768px) {
+  .App {
+    grid-template: 1fr 2fr;
+    grid-template-areas:
+      "title"
+      "nav"
+      "content";
+  }
+  /* .Nav {
+    display: flex;
+    flex-direction: row;
+  } */
+}
