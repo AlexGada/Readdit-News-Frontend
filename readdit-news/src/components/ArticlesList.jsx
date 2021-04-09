@@ -39,6 +39,9 @@ class ArticlesList extends Component {
     ) : (
       <main className="ArticleList">
         <h4>Filters:</h4>
+        <Button onClick={() => this.getQuery("created_at")} color="primary">
+          Date
+        </Button>
         <Button onClick={() => this.getQuery("author")} color="primary">
           Author
         </Button>
@@ -49,7 +52,15 @@ class ArticlesList extends Component {
           Votes
         </Button>
         {articles.map(
-          ({ article_id, title, topic, author, comment_count, votes }) => {
+          ({
+            article_id,
+            title,
+            topic,
+            author,
+            comment_count,
+            votes,
+            created_at,
+          }) => {
             return (
               <ArticleCard
                 key={`art${article_id}`}
@@ -60,6 +71,7 @@ class ArticlesList extends Component {
                   author,
                   comment_count,
                   votes,
+                  created_at,
                 }}
               />
             );

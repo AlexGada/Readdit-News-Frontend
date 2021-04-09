@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "@reach/router";
 import Voter from "./Voter";
+import { formatDate } from "../utils/utils";
 
 const useStyles = makeStyles({
   root: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles({
 
 export default function ArticleCard(props) {
   const classes = useStyles();
+  console.log(props.article);
   // const bull = <span className={classes.bullet}>•</span>;
   // {article} = this.props
   return (
@@ -57,7 +59,8 @@ export default function ArticleCard(props) {
           color="textSecondary"
           gutterBottom
         >
-          {props.article.comment_count} comments
+          {props.article.comment_count} comments <br></br>
+          posted {formatDate(props.article.created_at)}
         </Typography>
       </CardContent>
     </Card>
