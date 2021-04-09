@@ -9,6 +9,7 @@ class Voter extends React.Component {
   };
 
   updateVotes = (id, increment) => {
+    console.log(id);
     this.setState((currentState) => {
       return {
         voteChange: currentState.voteChange + increment,
@@ -25,6 +26,7 @@ class Voter extends React.Component {
   render() {
     const { article_id, comment_id, votes } = this.props;
     const { voteChange } = this.state;
+    console.log(article_id, comment_id);
     return (
       <div>
         <button onClick={() => this.updateVotes(article_id || comment_id, 1)}>

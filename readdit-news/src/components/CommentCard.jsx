@@ -27,8 +27,8 @@ const useStyles = makeStyles({
 
 export default function CommentCard(props) {
   const classes = useStyles();
+  console.log(props);
   // const bull = <span className={classes.bullet}>•</span>;
-  console.log(props.comment);
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent>
@@ -48,11 +48,9 @@ export default function CommentCard(props) {
         <Voter
           key={`vot${props.comment.comment_id}`}
           votes={props.comment.votes}
-          comment_id={props.comment.article_id}
+          article_id={props.comment.article_id}
         />
       </CardContent>
     </Card>
   );
 }
-
-//add voter

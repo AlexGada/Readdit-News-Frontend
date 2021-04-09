@@ -15,9 +15,7 @@ export const fetchArticles = async (
   order,
   author,
   p,
-  limit,
-  comment_count,
-  votes
+  limit
 ) => {
   const { data } = await request.get("/articles", {
     params: { topic, sort_by, order, author, p, limit },
@@ -36,7 +34,9 @@ export const changeVotes = (article_id, votes) => {
     .then((res) => console.log(res));
 };
 
-export const fetchComments = async (article_id) => {
-  const { data } = await request.get(`/articles/${article_id}/comments`);
+export const fetchComments = async (article_id, sort_by) => {
+  const { data } = await request.get(`/articles/${article_id}/comments`, {
+    params: { sort_by },
+  });
   return data.comments;
 };
