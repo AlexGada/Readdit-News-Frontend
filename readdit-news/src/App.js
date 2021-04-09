@@ -12,18 +12,11 @@ class App extends React.Component {
     sort_by: "created_at",
   };
 
-  getQuery = (event) => {
-    const newSortBy = event.target.value;
-    this.setState(() => {
-      return { sort_by: newSortBy };
-    });
-  };
-
   render() {
     return (
       <div className="App">
         <Title />
-        <Navbar getQuery={this.getQuery} />
+        <Navbar />
 
         <Router className="content">
           <ArticlesList path="/" sort_by={this.state.sort_by} />

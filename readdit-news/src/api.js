@@ -15,7 +15,9 @@ export const fetchArticles = async (
   order,
   author,
   p,
-  limit
+  limit,
+  comment_count,
+  votes
 ) => {
   const { data } = await request.get("/articles", {
     params: { topic, sort_by, order, author, p, limit },

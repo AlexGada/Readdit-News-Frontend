@@ -52,6 +52,13 @@ export default function ArticleCard(props) {
           votes={props.article.votes}
           article_id={props.article.article_id}
         />
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          gutterBottom
+        >
+          {props.article.comment_count} comments
+        </Typography>
       </CardContent>
     </Card>
   );
