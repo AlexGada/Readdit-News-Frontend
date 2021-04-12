@@ -102,8 +102,18 @@ p {
     "nav"
     "content";
 }
-
+.avatar {
+  float: right;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.avatar-text {
+  text-align: right;
+  color: white;
+}
 .Title {
+  text-align: left;
   border: 4px rgb(133, 169, 223) solid;
   grid-area: title;
   background-color: orange;

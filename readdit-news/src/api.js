@@ -40,3 +40,16 @@ export const fetchComments = async (article_id, sort_by) => {
   });
   return data.comments;
 };
+
+export const postComment = (article_id, username, body) => {
+  const comment = { username, body };
+  return request
+    .post(`/articles/${article_id}/comments`, comment)
+    .then(({ data }) => {
+      return data.comment;
+    });
+};
+
+export const deleteComment = (comment_id) => {
+  return request.delete(`/comments/${comment_id}`);
+};

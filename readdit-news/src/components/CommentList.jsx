@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import Loader from "./Loader";
-import CommentCard from "./CommentCard";
 import Button from "@material-ui/core/Button";
 import CommentPost from "./CommentPost";
+import { Link } from "@reach/router";
+import Voter from "./Voter";
+import { formatDate } from "../utils/utils";
 
 class CommentList extends Component {
   state = {
@@ -28,8 +30,38 @@ class CommentList extends Component {
       this.getComments();
     }
   }
+  getComments = () => {
+    const { article_id } = this.props;
+    const { sort_by } = this.state;
+    api.fetchComments(article_id, sort_by).then((comments) => {
+      this.setState({ comments, isLoading: false });
+    });
+  };
+
+  postNewComment = (newComment) => {
+    this.setState((currState) => {
+      return {
+        comments: [newComment, ...currState.comments],
+      };
+    });
+  };
+  deleteCommentClick = (event) => {
+    const { value } = event.target;
+    const { article_id } = this.props;
+    api
+      .deleteComment(value)
+      .then(() => {
+        api.fetchComments(article_id).then((comments) => {
+          this.setState({ comments, isLoading: false });
+        });
+      })
+      .catch((err) => {
+        this.setState({ err, isLoading: false });
+      });
+  };
   render() {
     const { comments, isLoading } = this.state;
+
     const { article_id } = this.props;
     return isLoading ? (
       <Loader />
@@ -42,32 +74,48 @@ class CommentList extends Component {
         <Button onClick={() => this.getQuery("votes")} color="primary">
           Votes
         </Button>
-        <CommentPost />
+        <CommentPost
+          article_id={article_id}
+          postNewComment={this.postNewComment}
+          path={`/articles/${article_id}`}
+        />
         {comments.map(({ comment_id, author, votes, created_at, body }) => {
           return (
-            <CommentCard
-              key={`art${comment_id}`}
-              comment={{
-                article_id,
-                comment_id,
-                author,
-                votes,
-                created_at,
-                body,
-              }}
-            />
+            <section key={comment_id}>
+              <Link to={`/users/${author}`}>
+                <h4>{`Author: ${author}`}</h4>
+              </Link>
+              <p>{body}</p>
+              <h3>{formatDate(created_at)}</h3>
+              <Voter
+                key={`vot${comment_id}`}
+                votes={votes}
+                article_id={article_id}
+              />
+              {author === "weegembump" ? (
+                <button onClick={this.deleteCommentClick} value={comment_id}>
+                  Delete Comment
+                </button>
+              ) : (
+                <div></div>
+              )}
+            </section>
           );
         })}
       </main>
     );
   }
-  getComments = () => {
-    const { article_id } = this.props;
-    const { sort_by } = this.state;
-    api.fetchComments(article_id, sort_by).then((comments) => {
-      this.setState({ comments, isLoading: false });
-    });
-  };
 }
-
 export default CommentList;
+
+// <CommentCard
+//             key={`art${comment_id}`}
+//             comment={{
+//               article_id,
+//               comment_id,
+//               author,
+//               votes,
+//               created_at,
+//               body,
+//             }}
+//           />
