@@ -12,7 +12,10 @@ class CommentList extends Component {
     comments: [],
     isLoading: true,
     sort_by: "votes",
+    page: 1,
   };
+
+  // on deleting comments there is no refresh/page update or ui exp
 
   getQuery = (event) => {
     const newSortBy = event;
@@ -24,16 +27,23 @@ class CommentList extends Component {
     this.getComments();
   }
   componentDidUpdate(prevProps, prevState) {
-    const { sort_by } = this.state;
-    if (sort_by !== prevState.sort_by) {
+    const { sort_by, page } = this.state;
+    if (sort_by !== prevState.sort_by || page !== prevState.page) {
       this.setState({ isLoading: true });
       this.getComments();
     }
   }
+
+  changePage = (increment) => {
+    this.setState((currState) => {
+      return { page: currState.page + increment };
+    });
+  };
+
   getComments = () => {
     const { article_id } = this.props;
-    const { sort_by } = this.state;
-    api.fetchComments(article_id, sort_by).then((comments) => {
+    const { sort_by, page } = this.state;
+    api.fetchComments(article_id, sort_by, page).then((comments) => {
       this.setState({ comments, isLoading: false });
     });
   };
@@ -48,10 +58,11 @@ class CommentList extends Component {
   deleteCommentClick = (event) => {
     const { value } = event.target;
     const { article_id } = this.props;
+    const { page } = this.state;
     api
       .deleteComment(value)
       .then(() => {
-        api.fetchComments(article_id).then((comments) => {
+        api.fetchComments(article_id, page).then((comments) => {
           this.setState({ comments, isLoading: false });
         });
       })
@@ -60,8 +71,7 @@ class CommentList extends Component {
       });
   };
   render() {
-    const { comments, isLoading } = this.state;
-
+    const { comments, isLoading, page } = this.state;
     const { article_id } = this.props;
     return isLoading ? (
       <Loader />
@@ -74,11 +84,19 @@ class CommentList extends Component {
         <Button onClick={() => this.getQuery("votes")} color="primary">
           Votes
         </Button>
+
         <CommentPost
           article_id={article_id}
           postNewComment={this.postNewComment}
           path={`/articles/${article_id}`}
         />
+        <section>
+          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
+            {"<"}
+          </button>
+          <span>{page}</span>
+          <button onClick={() => this.changePage(1)}>{">"}</button>
+        </section>
         {comments.map(({ comment_id, author, votes, created_at, body }) => {
           return (
             <section key={comment_id}>
@@ -102,6 +120,13 @@ class CommentList extends Component {
             </section>
           );
         })}
+        <section>
+          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
+            {"<"}
+          </button>
+          <span>{page}</span>
+          <button onClick={() => this.changePage(1)}>{">"}</button>
+        </section>
       </main>
     );
   }

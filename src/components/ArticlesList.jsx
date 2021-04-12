@@ -10,29 +10,34 @@ class ArticlesList extends Component {
     articles: [],
     isLoading: true,
     sort_by: "created_at",
+    page: 1,
   };
 
-  getQuery = (event) => {
-    const newSortBy = event;
-    this.setState(() => {
-      return { sort_by: newSortBy };
-    });
-  };
   componentDidMount() {
     const { topic } = this.props;
     this.getArticles();
   }
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
-    const { sort_by } = this.state;
-    if (topic !== prevProps.topic || sort_by !== prevState.sort_by) {
+    const { sort_by, page } = this.state;
+    if (
+      topic !== prevProps.topic ||
+      sort_by !== prevState.sort_by ||
+      page !== prevState.page
+    ) {
       this.setState({ isLoading: true });
       this.getArticles();
     }
   }
 
+  changePage = (increment) => {
+    this.setState((currState) => {
+      return { page: currState.page + increment };
+    });
+  };
+
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, page } = this.state;
 
     return isLoading ? (
       <Loader />
@@ -51,6 +56,13 @@ class ArticlesList extends Component {
         <Button onClick={() => this.getQuery("votes")} color="primary">
           Votes
         </Button>
+        <section>
+          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
+            {"<"}
+          </button>
+          <span>{this.state.page}</span>
+          <button onClick={() => this.changePage(1)}>{">"}</button>
+        </section>
         {articles.map(
           ({
             article_id,
@@ -77,6 +89,13 @@ class ArticlesList extends Component {
             );
           }
         )}
+        <section>
+          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
+            {"<"}
+          </button>
+          <span>{this.state.page}</span>
+          <button onClick={() => this.changePage(1)}>{">"}</button>
+        </section>
       </main>
     );
   }
@@ -86,16 +105,22 @@ class ArticlesList extends Component {
       sort_by,
       order,
       author,
-      p,
+      page,
       limit,
       comment_count,
       votes,
     } = this.state;
     api
-      .fetchArticles(topic, sort_by, order, author, p, limit)
+      .fetchArticles(topic, sort_by, order, author, page, limit)
       .then((articles) => {
         this.setState({ articles, isLoading: false });
       });
+  };
+  getQuery = (event) => {
+    const newSortBy = event;
+    this.setState(() => {
+      return { sort_by: newSortBy };
+    });
   };
 }
 export default ArticlesList;

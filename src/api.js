@@ -14,11 +14,11 @@ export const fetchArticles = async (
   sort_by,
   order,
   author,
-  p,
+  page,
   limit
 ) => {
   const { data } = await request.get("/articles", {
-    params: { topic, sort_by, order, author, p, limit },
+    params: { topic, sort_by, order, author, p: page, limit },
   });
   return data.articles;
 };
@@ -34,9 +34,9 @@ export const changeVotes = (article_id, votes) => {
     .then((res) => console.log(res));
 };
 
-export const fetchComments = async (article_id, sort_by) => {
+export const fetchComments = async (article_id, sort_by, page) => {
   const { data } = await request.get(`/articles/${article_id}/comments`, {
-    params: { sort_by },
+    params: { sort_by, p: page },
   });
   return data.comments;
 };
