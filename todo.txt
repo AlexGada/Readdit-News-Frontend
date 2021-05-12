@@ -1,0 +1,9 @@
+finish styling article card
+style voter
+restyle nav bar and change buttons
+style filters and pagination
+style single article pages
+style comment lists + individual comments + filters + text input
+style header / logged in user
+fix delete on refresh
+make home page
