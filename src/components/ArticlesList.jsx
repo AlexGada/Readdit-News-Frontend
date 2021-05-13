@@ -43,19 +43,24 @@ class ArticlesList extends Component {
       <Loader />
     ) : (
       <main className="ArticleList">
-        <h4>Filters:</h4>
-        <Button onClick={() => this.getQuery("created_at")} color="primary">
-          Date
-        </Button>
-        <Button onClick={() => this.getQuery("author")} color="primary">
-          Author
-        </Button>
-        <Button onClick={() => this.getQuery("comment_count")} color="primary">
-          Comments
-        </Button>
-        <Button onClick={() => this.getQuery("votes")} color="primary">
-          Votes
-        </Button>
+        <div className="filters">
+          <h4>Filters:</h4>
+          <Button onClick={() => this.getQuery("created_at")} color="primary">
+            Date
+          </Button>
+          <Button onClick={() => this.getQuery("author")} color="primary">
+            Author
+          </Button>
+          <Button
+            onClick={() => this.getQuery("comment_count")}
+            color="primary"
+          >
+            Comments
+          </Button>
+          <Button onClick={() => this.getQuery("votes")} color="primary">
+            Votes
+          </Button>
+        </div>
         <section>
           <button disabled={page === 1} onClick={() => this.changePage(-1)}>
             {"<"}
@@ -101,15 +106,8 @@ class ArticlesList extends Component {
   }
   getArticles = () => {
     const { topic } = this.props;
-    const {
-      sort_by,
-      order,
-      author,
-      page,
-      limit,
-      comment_count,
-      votes,
-    } = this.state;
+    const { sort_by, order, author, page, limit, comment_count, votes } =
+      this.state;
     api
       .fetchArticles(topic, sort_by, order, author, page, limit)
       .then((articles) => {

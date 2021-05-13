@@ -76,15 +76,16 @@ class CommentList extends Component {
     return isLoading ? (
       <Loader />
     ) : (
-      <main className="ArticleList">
-        <h4>Filters:</h4>
-        <Button onClick={() => this.getQuery("created_at")} color="primary">
-          Date
-        </Button>
-        <Button onClick={() => this.getQuery("votes")} color="primary">
-          Votes
-        </Button>
-
+      <main className="CommentList">
+        <div className="filters">
+          <h4>Filters:</h4>
+          <Button onClick={() => this.getQuery("created_at")} color="primary">
+            Date
+          </Button>
+          <Button onClick={() => this.getQuery("votes")} color="primary">
+            Votes
+          </Button>
+        </div>
         <CommentPost
           article_id={article_id}
           postNewComment={this.postNewComment}
@@ -97,26 +98,34 @@ class CommentList extends Component {
           <span>{page}</span>
           <button onClick={() => this.changePage(1)}>{">"}</button>
         </section>
+        <h4>Comments:</h4>
         {comments.map(({ comment_id, author, votes, created_at, body }) => {
           return (
             <section key={comment_id}>
-              <Link to={`/users/${author}`}>
-                <h4>{`Author: ${author}`}</h4>
-              </Link>
-              <p>{body}</p>
-              <h3>{formatDate(created_at)}</h3>
-              <Voter
-                key={`vot${comment_id}`}
-                votes={votes}
-                article_id={article_id}
-              />
-              {author === "weegembump" ? (
-                <button onClick={this.deleteCommentClick} value={comment_id}>
-                  Delete Comment
-                </button>
-              ) : (
-                <div></div>
-              )}
+              <div className="singleComment">
+                <div className="singleCommentBody">
+                  <h4>{`Author: ${author}`}</h4>
+                  <p>{body}</p>
+                  <h4>{formatDate(created_at)}</h4>
+                </div>
+                <div className="commentBodySmall">
+                  <Voter
+                    key={`vot${comment_id}`}
+                    votes={votes}
+                    article_id={article_id}
+                  />
+                  {author === "weegembump" ? (
+                    <button
+                      onClick={this.deleteCommentClick}
+                      value={comment_id}
+                    >
+                      Delete Comment
+                    </button>
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
+              </div>
             </section>
           );
         })}

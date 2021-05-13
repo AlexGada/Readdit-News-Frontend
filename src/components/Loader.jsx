@@ -1,10 +1,13 @@
 import React from "react";
+import Loader from "react-loader-spinner";
 
-const Loader = () => {
-  return (
-    <main className="Loader">
-      <h3>loading...</h3>
-    </main>
-  );
-};
-export default Loader;
+export default class App extends React.Component {
+  //other logic
+  render() {
+    return (
+      <div className="loader">
+        <Loader type="BallTriangle" color="#00BFFF" height={80} width={80} />{" "}
+      </div>
+    );
+  }
+}
