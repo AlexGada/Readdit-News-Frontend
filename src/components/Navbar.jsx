@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../api";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Button from "@material-ui/core/Button";
+import {
+  faNewspaper,
+  faLaptopCode,
+  faUtensils,
+  faFutbol,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //material ui button and dropdown and card
+
+const icons = [faLaptopCode, faFutbol, faUtensils];
 
 class Navbar extends Component {
   state = {
@@ -20,32 +27,25 @@ class Navbar extends Component {
       <nav className="Nav">
         Topics <br></br>
         <Link to="/">
-          <ButtonGroup
-            size="large"
-            color="primary"
-            aria-label="large outlined primary button group"
-          >
-            <Button className="button" variant="contained">
-              All Articles
-            </Button>
-          </ButtonGroup>
+          <FontAwesomeIcon className="navButton" icon={faNewspaper} size="4x" />{" "}
+          <br />
+          all articles
         </Link>
-        {topics.map((topic) => {
+        {topics.map((topic, idx) => {
+          const Icon = icons[idx];
           return (
             <Link
               className="navLink"
               key={topic.description}
               to={`/${topic.slug}/articles`}
             >
-              <ButtonGroup
-                size="large"
-                color="primary"
-                aria-label="large outlined primary button group"
-              >
-                <Button className="button" variant="contained">
-                  {topic.slug}
-                </Button>
-              </ButtonGroup>
+              {/* <button className={topic.slug}>{topic.slug}</button> */}
+              <FontAwesomeIcon
+                className="navButton"
+                icon={Icon}
+                size="4x"
+              />{" "}
+              <br /> {topic.slug}
             </Link>
           );
         })}

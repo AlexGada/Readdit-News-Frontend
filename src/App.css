@@ -72,7 +72,7 @@ a:hover {
 .Title {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  /* width: 100vhß; */
   border: 4px rgb(133, 169, 223) solid;
   grid-area: title;
   background-color: orange;
@@ -183,6 +183,7 @@ a:hover {
   flex-direction: column;
   border-right: 4px orange solid;
 }
+
 @media only screen and (min-width: 768px) {
   .App {
     /* grid-template-columns: 1fr 6fr; */
@@ -193,8 +194,12 @@ a:hover {
   .Nav {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
   }
-
+  .navButton {
+    padding: 1rem;
+    margin: 4rem 0 1rem 0;
+  }
   .ArticleCard {
     width: 70%;
     /* position: center; */
