@@ -25,10 +25,8 @@ class Navbar extends Component {
     const { topics } = this.state;
     return (
       <nav className="Nav">
-        Topics <br></br>
         <Link to="/">
-          <FontAwesomeIcon className="navButton" icon={faNewspaper} size="4x" />{" "}
-          <br />
+          <FontAwesomeIcon className="navButton" icon={faNewspaper} /> <br />
           all articles
         </Link>
         {topics.map((topic, idx) => {
@@ -40,12 +38,8 @@ class Navbar extends Component {
               to={`/${topic.slug}/articles`}
             >
               {/* <button className={topic.slug}>{topic.slug}</button> */}
-              <FontAwesomeIcon
-                className="navButton"
-                icon={Icon}
-                size="4x"
-              />{" "}
-              <br /> {topic.slug}
+              <FontAwesomeIcon className="navButton" icon={Icon} /> <br />{" "}
+              {topic.slug}
             </Link>
           );
         })}

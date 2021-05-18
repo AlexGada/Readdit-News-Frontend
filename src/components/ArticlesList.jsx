@@ -61,6 +61,24 @@ class ArticlesList extends Component {
             Votes
           </Button>
         </div>
+        {/* <select name="filters" id="filters">
+          Filters
+          <option value="Date" onClick={() => this.getQuery("created_at")}>
+            Date
+          </option>
+          <option value="Author" onClick={() => this.getQuery("author")}>
+            Author
+          </option>
+          <option
+            value="Comments"
+            onClick={() => this.getQuery("comment_count")}
+          >
+            Comments
+          </option>
+          <option value="Votes" onClick={() => this.getQuery("votes")}>
+            Votes
+          </option>
+        </select> */}
         <section>
           <button disabled={page === 1} onClick={() => this.changePage(-1)}>
             {"<"}
@@ -109,7 +127,7 @@ class ArticlesList extends Component {
     const { sort_by, order, author, page, limit, comment_count, votes } =
       this.state;
     api
-      .fetchArticles(topic, sort_by, order, author, page, limit)
+      .fetchArticles(topic, sort_by, order, author, page, limit, comment_count)
       .then((articles) => {
         this.setState({ articles, isLoading: false });
       });

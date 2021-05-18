@@ -83,16 +83,19 @@ a:hover {
 }
 
 .Nav {
+  display: flex;
+  flex-direction: row;
   border: 4px rgb(173, 87, 147) solid;
   grid-area: nav;
-  padding: 5px;
+  padding: 1rem;
   background-color: rgb(184, 241, 255);
+  justify-content: space-evenly;
 }
-.navLink {
+/* .navLink {
   margin: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-}
+} */
 .Content {
   border: 4px rgb(46, 167, 72) solid;
   grid-area: content;
@@ -184,6 +187,12 @@ a:hover {
   border-right: 4px orange solid;
 }
 
+.navButton {
+  padding: 1rem;
+  margin: 1rem 0 1rem 0;
+  font-size: 30px;
+}
+
 @media only screen and (min-width: 768px) {
   .App {
     /* grid-template-columns: 1fr 6fr; */
@@ -192,13 +201,14 @@ a:hover {
       "nav content";
   }
   .Nav {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     justify-content: flex-start;
   }
   .navButton {
     padding: 1rem;
     margin: 4rem 0 1rem 0;
+    font-size: 80px;
   }
   .ArticleCard {
     width: 70%;
