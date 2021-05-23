@@ -1,6 +1,8 @@
 import React from "react";
 import * as api from "../api";
 // import ErrorDisplayer from "./ErrorDisplayer";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Voter extends React.Component {
   state = {
@@ -29,13 +31,19 @@ class Voter extends React.Component {
     console.log(article_id, comment_id);
     return (
       <div>
-        <button onClick={() => this.updateVotes(article_id || comment_id, 1)}>
-          +
-        </button>
+        <FontAwesomeIcon
+          icon={faThumbsUp}
+          className="voterIcon"
+          onClick={() => this.updateVotes(article_id || comment_id, 1)}
+        />
+
         <p className="votes">{votes + voteChange} votes</p>
-        <button onClick={() => this.updateVotes(article_id || comment_id, -1)}>
-          -
-        </button>
+
+        <FontAwesomeIcon
+          icon={faThumbsDown}
+          className="voterIcon"
+          onClick={() => this.updateVotes(article_id || comment_id, -1)}
+        />
       </div>
     );
   }

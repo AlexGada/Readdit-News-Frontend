@@ -1,9 +1,2 @@
-finish styling article card - half done
-style voter
-restyle nav bar and change buttons *MEDIA QUERY THE NAV BAR*
-style filters and pagination
-style single article pages
-style comment lists + individual comments + filters + text input - *started*
-style header / logged in user
 fix delete on refresh
 make home page

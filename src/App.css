@@ -1,15 +1,15 @@
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
   color: orange;
   letter-spacing: 0.15rem;
 }
 h2 {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   color: orange;
   letter-spacing: 0.15rem;
 }
 h3 {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   color: rgb(133, 169, 223);
   letter-spacing: 0.15rem;
 }
@@ -20,7 +20,7 @@ h4 {
 }
 
 body {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   letter-spacing: 0.15rem;
 }
@@ -61,34 +61,43 @@ a:hover {
   padding: 30rem;
 }
 .avatar {
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
   position: absolute;
   right: 0;
   color: white;
+  padding-right: 0.5rem;
 }
-.avatar-text {
-  color: white;
+.avatarImage {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  margin-top: 0.25rem;
+}
+.username {
+  color: rgb(97, 191, 210);
+  padding-bottom: 1rem;
 }
 .Title {
   display: flex;
   flex-direction: row;
   /* width: 100vhß; */
-  border: 4px rgb(133, 169, 223) solid;
+  /* border-bottom: 4px orange solid; */
   grid-area: title;
-  background-color: orange;
+  background-color: rgb(253, 236, 204);
 }
 .Title-header {
-  color: white;
+  color: rgb(97, 191, 210);
   justify-content: flex-start;
+  margin-left: 2rem;
 }
 
 .Nav {
   display: flex;
   flex-direction: row;
-  border: 4px rgb(173, 87, 147) solid;
+  border-bottom: 4px rgb(184, 241, 255) solid;
   grid-area: nav;
   padding: 1rem;
-  background-color: rgb(184, 241, 255);
+  background-color: rgb(236, 251, 255);
   justify-content: space-evenly;
 }
 /* .navLink {
@@ -160,7 +169,8 @@ a:hover {
   align-items: center;
   margin: 1rem;
 }
-
+.singleArticle {
+}
 .singleComment {
   border: 4px rgb(133, 169, 223) solid;
   display: grid;
@@ -191,9 +201,58 @@ a:hover {
   padding: 1rem;
   margin: 1rem 0 1rem 0;
   font-size: 30px;
+  color: orange;
 }
 
+.voterIcon {
+  /* color: rgb(133, 169, 223); */
+  color: orange;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  margin: 1rem;
+}
+
+.filterButton {
+  transition-duration: 0.4s;
+  /* background-color: white; */
+  background-color: rgb(97, 191, 210);
+
+  color: white;
+  border: rgb(97, 191, 210);
+  height: 3rem;
+  width: auto;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  margin: 0.5rem;
+}
+.filterButton:hover {
+  background-color: orange; /* Green */
+  color: white;
+}
+.postComment {
+  min-width: 300px;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
+}
 @media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+
   .App {
     /* grid-template-columns: 1fr 6fr; */
     grid-template-areas:
@@ -204,6 +263,7 @@ a:hover {
     /* display: flex; */
     flex-direction: column;
     justify-content: flex-start;
+    border-right: rgb(184, 241, 255);
   }
   .navButton {
     padding: 1rem;
@@ -214,7 +274,19 @@ a:hover {
     width: 70%;
     /* position: center; */
   }
+  .singleArticle {
+    min-width: 900px;
+  }
   .singleComment {
     min-width: 900px;
+  }
+  .avatarImage {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin-top: 0.75rem;
+  }
+  .postComment {
+    min-width: 700px;
   }
 }

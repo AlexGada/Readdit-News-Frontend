@@ -3,7 +3,6 @@ import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
 // import Voter from "./Voter";
-import Button from "@material-ui/core/Button";
 
 class ArticlesList extends Component {
   state = {
@@ -14,7 +13,6 @@ class ArticlesList extends Component {
   };
 
   componentDidMount() {
-    const { topic } = this.props;
     this.getArticles();
   }
   componentDidUpdate(prevProps, prevState) {
@@ -45,40 +43,33 @@ class ArticlesList extends Component {
       <main className="ArticleList">
         <div className="filters">
           <h4>Filters:</h4>
-          <Button onClick={() => this.getQuery("created_at")} color="primary">
+
+          <button
+            onClick={() => this.getQuery("created_at")}
+            className="filterButton"
+          >
             Date
-          </Button>
-          <Button onClick={() => this.getQuery("author")} color="primary">
+          </button>
+          <button
+            onClick={() => this.getQuery("author")}
+            className="filterButton"
+          >
             Author
-          </Button>
-          <Button
+          </button>
+
+          <button
             onClick={() => this.getQuery("comment_count")}
-            color="primary"
+            className="filterButton"
           >
             Comments
-          </Button>
-          <Button onClick={() => this.getQuery("votes")} color="primary">
+          </button>
+          <button
+            onClick={() => this.getQuery("votes")}
+            className="filterButton"
+          >
             Votes
-          </Button>
+          </button>
         </div>
-        {/* <select name="filters" id="filters">
-          Filters
-          <option value="Date" onClick={() => this.getQuery("created_at")}>
-            Date
-          </option>
-          <option value="Author" onClick={() => this.getQuery("author")}>
-            Author
-          </option>
-          <option
-            value="Comments"
-            onClick={() => this.getQuery("comment_count")}
-          >
-            Comments
-          </option>
-          <option value="Votes" onClick={() => this.getQuery("votes")}>
-            Votes
-          </option>
-        </select> */}
         <section>
           <button disabled={page === 1} onClick={() => this.changePage(-1)}>
             {"<"}

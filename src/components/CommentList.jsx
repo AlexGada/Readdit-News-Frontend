@@ -79,12 +79,18 @@ class CommentList extends Component {
       <main className="CommentList">
         <div className="filters">
           <h4>Filters:</h4>
-          <Button onClick={() => this.getQuery("created_at")} color="primary">
+          <button
+            onClick={() => this.getQuery("created_at")}
+            className="filterButton"
+          >
             Date
-          </Button>
-          <Button onClick={() => this.getQuery("votes")} color="primary">
+          </button>
+          <button
+            onClick={() => this.getQuery("votes")}
+            className="filterButton"
+          >
             Votes
-          </Button>
+          </button>
         </div>
         <CommentPost
           article_id={article_id}

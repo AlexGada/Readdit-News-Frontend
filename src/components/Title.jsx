@@ -6,13 +6,20 @@ const Title = () => {
     <header className="Title">
       <h1 className="Title-header">READDIT NEWS</h1>
       <div className="avatar">
-        <Avatar
+        {/* <Avatar
           className="avatar"
           alt="weegembump"
           src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
+        /> */}
+        <img
+          src="https://vignette.wikia.nocookie.net/mrmen/images/7/7e/MrMen-Bump.png/revision/latest?cb=20180123225553"
+          alt="weegembump"
+          className="avatarImage"
         />
         <br />
-        <p>Logged in as weegembump</p>
+        <p className="username">
+          Logged in as <br></br> weegembump
+        </p>
       </div>
     </header>
   );

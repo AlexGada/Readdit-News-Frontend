@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-// import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-// import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+
 import * as api from "../api";
 import ErrorDisplayer from "./ErrorDisplayer";
 
@@ -48,14 +45,15 @@ class CommentPost extends Component {
         <label>
           Post Comment:
           <br />
-          <input
+          <textarea
             value={this.state.body}
             onChange={this.handleChange}
             type="text"
             placeholder="Type your comment here..."
-          ></input>
+            className="postComment"
+          ></textarea>
           <br />
-          <input type="submit" value="Post Comment!" />
+          <input type="submit" value="Post Comment!" className="" />
         </label>
       </form>
     );
