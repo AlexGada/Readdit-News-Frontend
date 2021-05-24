@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api";
 import Loader from "./Loader";
-import Button from "@material-ui/core/Button";
 import CommentPost from "./CommentPost";
 import { Link } from "@reach/router";
 import Voter from "./Voter";
@@ -107,32 +106,32 @@ class CommentList extends Component {
         <h4>Comments:</h4>
         {comments.map(({ comment_id, author, votes, created_at, body }) => {
           return (
-            <section key={comment_id}>
-              <div className="singleComment">
-                <div className="singleCommentBody">
-                  <h4>{`Author: ${author}`}</h4>
-                  <p>{body}</p>
-                  <h4>{formatDate(created_at)}</h4>
-                </div>
-                <div className="commentBodySmall">
-                  <Voter
-                    key={`vot${comment_id}`}
-                    votes={votes}
-                    article_id={article_id}
-                  />
-                  {author === "weegembump" ? (
-                    <button
-                      onClick={this.deleteCommentClick}
-                      value={comment_id}
-                    >
-                      Delete Comment
-                    </button>
-                  ) : (
-                    <div></div>
-                  )}
-                </div>
+            <div className="singleComment" key={comment_id}>
+              <div className="singleCommentBody">
+                <h4>{`Author: ${author}`}</h4>
+                <p>{body}</p>
+                <h4>{formatDate(created_at)}</h4>
               </div>
-            </section>
+              <div className="commentBodySmall">
+                <Voter
+                  key={`vot${comment_id}`}
+                  votes={votes}
+                  article_id={article_id}
+                />
+                {author === "weegembump" ? (
+                  <button
+                    onClick={this.deleteCommentClick}
+                    value={comment_id}
+                    className="filterButton"
+                  >
+                    {" "}
+                    Delete Comment
+                  </button>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
           );
         })}
         <section>

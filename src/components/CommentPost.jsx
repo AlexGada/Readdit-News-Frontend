@@ -53,7 +53,7 @@ class CommentPost extends Component {
             className="postComment"
           ></textarea>
           <br />
-          <input type="submit" value="Post Comment!" className="" />
+          <input type="submit" value="Post Comment!" className="submitButton" />
         </label>
       </form>
     );

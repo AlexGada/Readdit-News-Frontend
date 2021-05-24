@@ -46,18 +46,20 @@ class SingleArticle extends Component {
 
     //EVENTUALLY link to author page
     return (
-      <div className="singleArticle">
-        <h2>{title}</h2>
-        <h3>by {author}</h3>
-        <h4>posted {formatDate(created_at)}</h4>
-        <div className="singleArticleBody">
-          <p className="articleBodyMain">{body}</p>
-          <div className="articleBodySmall">
-            <Voter
-              key={`vot${article_id}`}
-              votes={votes}
-              article_id={article_id}
-            />
+      <div>
+        <div className="singleArticle">
+          <h2>{title}</h2>
+          <h3>by {author}</h3>
+          <h4>posted {formatDate(created_at)}</h4>
+          <div className="singleArticleBody">
+            <p className="articleBodyMain">{body}</p>
+            <div className="articleBodySmall">
+              <Voter
+                key={`vot${article_id}`}
+                votes={votes}
+                article_id={article_id}
+              />
+            </div>
           </div>
         </div>
         <CommentList article_id={article_id} />
