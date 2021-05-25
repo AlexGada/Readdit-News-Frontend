@@ -49,34 +49,3 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-//  render() {
-//     const { topics } = this.state;
-//     return (
-//       <nav className="Nav">
-//         <DropdownButton id="nav_dropdown" title="Topics" variant="danger">
-//           <Dropdown.Item href="/articles">All</Dropdown.Item>
-//           {topics.map((topic) => {
-//             return (
-//               <Dropdown.Item
-//                 href={`/${topic.slug}/articles`}
-//                 key={`${topic.slug}`}
-//               >
-//                 {topic.slug}
-//               </Dropdown.Item>
-//             );
-//           })}
-//         </DropdownButton>
-//         <ButtonGroup
-//           size="large"
-//           color="primary"
-//           aria-label="large outlined primary button group"
-//         >
-//           <Button
-//             onClick={this.getQuery}
-//             className="button"
-//             variant="contained"
-//           >
-//             Author
-//           </Button>
-//         </ButtonGroup>
-//       </nav>

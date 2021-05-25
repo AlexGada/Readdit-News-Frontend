@@ -86,7 +86,8 @@ a:hover {
   background-color: rgb(241, 196, 113);
 }
 .Title-header {
-  color: rgb(97, 191, 210);
+  color: rgb(133, 169, 223);
+  /* color: rgb(206, 233, 241); */
   justify-content: flex-start;
   margin-left: 2rem;
 }
@@ -225,7 +226,7 @@ a:hover {
 
 .filterButton {
   transition-duration: 0.4s;
-  /* background-color: white; */
+
   background-color: rgb(133, 169, 223);
 
   color: white;
@@ -274,6 +275,13 @@ a:hover {
   background-color: orange;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+.pagination {
+  color: orange;
+  font-size: 1.5rem;
+  background-color: white;
+  border: white;
+  margin: 1rem;
 }
 @media only screen and (min-width: 768px) {
   h1 {

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import * as api from "../api";
 import Loader from "./Loader";
 import CommentPost from "./CommentPost";
-import { Link } from "@reach/router";
 import Voter from "./Voter";
 import { formatDate } from "../utils/utils";
-
+import { ReactComponent as Right } from "../images/chevron-circle-right-solid.svg";
+import { ReactComponent as Left } from "../images/chevron-circle-left-solid.svg";
+import { ReactComponent as Clock } from "../images/clock-solid.svg";
+import { ReactComponent as Votes } from "../images/thumbs-up-solid.svg";
 class CommentList extends Component {
   state = {
     comments: [],
@@ -14,8 +16,6 @@ class CommentList extends Component {
     page: 1,
   };
 
-  // on deleting comments there is no refresh/page update or ui exp
-
   getQuery = (event) => {
     const newSortBy = event;
     this.setState(() => {
@@ -23,8 +23,19 @@ class CommentList extends Component {
     });
   };
   componentDidMount() {
-    this.getComments();
+    const { article_id } = this.props;
+    Promise.all([
+      api.fetchArticleById(article_id),
+      api.fetchComments(article_id),
+    ])
+      .then(([article, comments]) => {
+        this.setState({ article, comments, isLoading: false });
+      })
+      .catch((err) => {
+        this.setState({ err, isLoading: false });
+      });
   }
+
   componentDidUpdate(prevProps, prevState) {
     const { sort_by, page } = this.state;
     if (sort_by !== prevState.sort_by || page !== prevState.page) {
@@ -57,11 +68,11 @@ class CommentList extends Component {
   deleteCommentClick = (event) => {
     const { value } = event.target;
     const { article_id } = this.props;
-    const { page } = this.state;
+    const { page, sort_by } = this.state;
     api
       .deleteComment(value)
       .then(() => {
-        api.fetchComments(article_id, page).then((comments) => {
+        api.fetchComments(article_id, sort_by, page).then((comments) => {
           this.setState({ comments, isLoading: false });
         });
       })
@@ -82,13 +93,13 @@ class CommentList extends Component {
             onClick={() => this.getQuery("created_at")}
             className="filterButton"
           >
-            Date
+            Date <Clock />
           </button>
           <button
             onClick={() => this.getQuery("votes")}
             className="filterButton"
           >
-            Votes
+            Votes <Votes />
           </button>
         </div>
         <CommentPost
@@ -97,11 +108,17 @@ class CommentList extends Component {
           path={`/articles/${article_id}`}
         />
         <section>
-          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
-            {"<"}
+          <button
+            disabled={page === 1}
+            onClick={() => this.changePage(-1)}
+            className="pagination"
+          >
+            <Left />
           </button>
           <span>{page}</span>
-          <button onClick={() => this.changePage(1)}>{">"}</button>
+          <button onClick={() => this.changePage(1)} className="pagination">
+            <Right />
+          </button>
         </section>
         <h4>Comments:</h4>
         {comments.map(({ comment_id, author, votes, created_at, body }) => {
@@ -113,11 +130,6 @@ class CommentList extends Component {
                 <h4>{formatDate(created_at)}</h4>
               </div>
               <div className="commentBodySmall">
-                <Voter
-                  key={`vot${comment_id}`}
-                  votes={votes}
-                  article_id={article_id}
-                />
                 {author === "weegembump" ? (
                   <button
                     onClick={this.deleteCommentClick}
@@ -128,18 +140,28 @@ class CommentList extends Component {
                     Delete Comment
                   </button>
                 ) : (
-                  <div></div>
+                  <Voter
+                    key={`vot${comment_id}`}
+                    votes={votes}
+                    article_id={article_id}
+                  />
                 )}
               </div>
             </div>
           );
         })}
         <section>
-          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
-            {"<"}
+          <button
+            disabled={page === 1}
+            onClick={() => this.changePage(-1)}
+            className="pagination"
+          >
+            <Left />
           </button>
           <span>{page}</span>
-          <button onClick={() => this.changePage(1)}>{">"}</button>
+          <button onClick={() => this.changePage(1)} className="pagination">
+            <Right />
+          </button>
         </section>
       </main>
     );

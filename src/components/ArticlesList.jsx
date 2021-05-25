@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import * as api from "../api";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
+import { ReactComponent as Right } from "../images/chevron-circle-right-solid.svg";
+import { ReactComponent as Left } from "../images/chevron-circle-left-solid.svg";
+import { ReactComponent as Clock } from "../images/clock-solid.svg";
+import { ReactComponent as Votes } from "../images/thumbs-up-solid.svg";
+import { ReactComponent as Pen } from "../images/pencil-alt-solid.svg";
+import { ReactComponent as Comment } from "../images/comment-solid.svg";
 // import Voter from "./Voter";
 
 class ArticlesList extends Component {
@@ -48,34 +54,40 @@ class ArticlesList extends Component {
             onClick={() => this.getQuery("created_at")}
             className="filterButton"
           >
-            Date
+            Date <Clock />
           </button>
           <button
             onClick={() => this.getQuery("author")}
             className="filterButton"
           >
-            Author
+            Author <Pen />
           </button>
 
           <button
             onClick={() => this.getQuery("comment_count")}
             className="filterButton"
           >
-            Comments
+            Comments <Comment />
           </button>
           <button
             onClick={() => this.getQuery("votes")}
             className="filterButton"
           >
-            Votes
+            Votes <Votes />
           </button>
         </div>
         <section>
-          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
-            {"<"}
+          <button
+            disabled={page === 1}
+            onClick={() => this.changePage(-1)}
+            className="pagination"
+          >
+            <Left />
           </button>
-          <span>{this.state.page}</span>
-          <button onClick={() => this.changePage(1)}>{">"}</button>
+          <span>{page}</span>
+          <button onClick={() => this.changePage(1)} className="pagination">
+            <Right />
+          </button>
         </section>
         {articles.map(
           ({
@@ -104,11 +116,17 @@ class ArticlesList extends Component {
           }
         )}
         <section>
-          <button disabled={page === 1} onClick={() => this.changePage(-1)}>
-            {"<"}
+          <button
+            disabled={page === 1}
+            onClick={() => this.changePage(-1)}
+            className="pagination"
+          >
+            <Left />
           </button>
-          <span>{this.state.page}</span>
-          <button onClick={() => this.changePage(1)}>{">"}</button>
+          <span>{page}</span>
+          <button onClick={() => this.changePage(1)} className="pagination">
+            <Right />
+          </button>
         </section>
       </main>
     );

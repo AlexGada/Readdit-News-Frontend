@@ -69,29 +69,3 @@ class SingleArticle extends Component {
 }
 
 export default SingleArticle;
-
-// <Card className={classes.root} variant="outlined">
-//       <CardContent>
-//         <Typography variant="h5" component="h2">
-//           <h2>{title}</h2>
-//         </Typography>
-//         <Typography className={classes.pos} color="textSecondary">
-//           by {author}
-//         </Typography>
-//         <Typography variant="body2" component="p">
-//           {body}
-//         </Typography>
-//         <Typography className={classes.pos} color="textSecondary">
-//           posted {formatDate(created_at)}
-//         </Typography>
-//         <Voter
-//           key={`vot${article_id}`}
-//           votes={votes}
-//           article_id={article_id}
-//         />
-//       </CardContent>
-//       <CardActions>
-//         <Button size="small">{comment_count}comments</Button>
-//       </CardActions>
-//       <CommentList article_id={article_id} />
-//     </Card>
