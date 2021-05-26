@@ -228,10 +228,8 @@ a:hover {
 .filterButton {
   transition-duration: 0.4s;
 
-  /* background-color: rgb(133, 169, 223); */
-  background-color: rgb(206, 233, 241);
-
-  color: orange;
+  background-color: rgb(133, 169, 223);
+  color: white;
   border: rgb(133, 169, 223);
   height: 3rem;
   width: auto;

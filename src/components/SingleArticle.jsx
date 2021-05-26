@@ -29,10 +29,9 @@ class SingleArticle extends Component {
       title,
       author,
       body,
-      topic,
+
       created_at,
       votes,
-      comment_count,
     } = article;
     if (isLoading) {
       return <Loader />;

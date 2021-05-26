@@ -153,8 +153,7 @@ class ArticlesList extends Component {
   }
   getArticles = () => {
     const { topic } = this.props;
-    const { sort_by, order, author, page, limit, comment_count, votes } =
-      this.state;
+    const { sort_by, order, author, page, limit, comment_count } = this.state;
     api
       .fetchArticles(topic, sort_by, order, author, page, limit, comment_count)
       .then((articles) => {
