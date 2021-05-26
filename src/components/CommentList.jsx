@@ -134,9 +134,8 @@ class CommentList extends Component {
                   <button
                     onClick={this.deleteCommentClick}
                     value={comment_id}
-                    className="filterButton"
+                    className="deleteButton"
                   >
-                    {" "}
                     Delete Comment
                   </button>
                 ) : (
@@ -168,15 +167,3 @@ class CommentList extends Component {
   }
 }
 export default CommentList;
-
-// <CommentCard
-//             key={`art${comment_id}`}
-//             comment={{
-//               article_id,
-//               comment_id,
-//               author,
-//               votes,
-//               created_at,
-//               body,
-//             }}
-//           />

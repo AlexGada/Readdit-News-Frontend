@@ -8,7 +8,6 @@ import { ReactComponent as Clock } from "../images/clock-solid.svg";
 import { ReactComponent as Votes } from "../images/thumbs-up-solid.svg";
 import { ReactComponent as Pen } from "../images/pencil-alt-solid.svg";
 import { ReactComponent as Comment } from "../images/comment-solid.svg";
-// import Voter from "./Voter";
 
 class ArticlesList extends Component {
   state = {
@@ -37,6 +36,26 @@ class ArticlesList extends Component {
   changePage = (increment) => {
     this.setState((currState) => {
       return { page: currState.page + increment };
+    });
+  };
+
+  deleteArticle = (article_id) => {
+    api.deleteArticle(article_id).then(() => {
+      api
+        .fetchArticles(
+          this.topic,
+          this.sort_by,
+          this.order,
+          this.author,
+          this.page,
+          this.limit
+        )
+        .then((articles) => {
+          this.setState({ articles, isLoading: false });
+        })
+        .catch((err) => {
+          this.setState({ err, isLoading: false });
+        });
     });
   };
 
@@ -111,6 +130,7 @@ class ArticlesList extends Component {
                   votes,
                   created_at,
                 }}
+                deleteArticle={this.deleteArticle}
               />
             );
           }

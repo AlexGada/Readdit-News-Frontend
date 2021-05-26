@@ -82,11 +82,12 @@ a:hover {
   flex-direction: row;
   /* width: 100vhß; */
   /* border-bottom: 4px orange solid; */
+
   grid-area: title;
   background-color: rgb(241, 196, 113);
 }
 .Title-header {
-  color: rgb(133, 169, 223);
+  color: white;
   /* color: rgb(206, 233, 241); */
   justify-content: flex-start;
   margin-left: 2rem;
@@ -227,9 +228,10 @@ a:hover {
 .filterButton {
   transition-duration: 0.4s;
 
-  background-color: rgb(133, 169, 223);
+  /* background-color: rgb(133, 169, 223); */
+  background-color: rgb(206, 233, 241);
 
-  color: white;
+  color: orange;
   border: rgb(133, 169, 223);
   height: 3rem;
   width: auto;
@@ -237,7 +239,23 @@ a:hover {
   border-radius: 12px;
   margin: 0.5rem;
 }
+
 .filterButton:hover {
+  background-color: orange; /* Green */
+  color: white;
+}
+.deleteButton {
+  transition-duration: 0.4s;
+  background-color: rgb(133, 169, 223);
+  border: rgb(133, 169, 223);
+  color: white;
+  height: 3rem;
+  width: auto;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  margin: 0.5rem;
+}
+.deleteButton:hover {
   background-color: orange; /* Green */
   color: white;
 }
@@ -308,10 +326,8 @@ a:hover {
       "nav content";
   }
   .Nav {
-    /* display: flex; */
     flex-direction: column;
     justify-content: flex-start;
-    border-right: rgb(184, 241, 255);
   }
   .navButton {
     padding: 1rem;
@@ -335,7 +351,7 @@ a:hover {
     border-radius: 50%;
     margin-top: 0.75rem;
   }
-  /* .postComment {
-    min-width: 700px;
-  } */
+  .Nav {
+    width: 12rem;
+  }
 }

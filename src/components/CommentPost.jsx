@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-
 import * as api from "../api";
 import ErrorDisplayer from "./ErrorDisplayer";
-
-// remove material ui and fix post comments add bland items and then css the rest
 
 class CommentPost extends Component {
   state = {

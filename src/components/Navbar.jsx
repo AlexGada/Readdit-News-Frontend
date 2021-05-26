@@ -8,7 +8,6 @@ import {
   faFutbol,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//material ui button and dropdown and card
 
 const icons = [faLaptopCode, faFutbol, faUtensils];
 

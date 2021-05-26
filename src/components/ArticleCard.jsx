@@ -18,11 +18,16 @@ export default function ArticleCard(props) {
         </p>
       </div>
       <div className="ArticleCardSmall">
-        <Voter
-          key={`vot${props.article.article_id}`}
-          votes={props.article.votes}
-          article_id={props.article.article_id}
-        />
+        {props.article.author === "weegembump" ? (
+          <h4>you can't vote on your own article!</h4>
+        ) : (
+          <Voter
+            key={`vot${props.article.comment_id}`}
+            votes={props.article.votes}
+            article_id={props.article.article_id}
+          />
+        )}
+
         <Link to={`/articles/${props.article.article_id}`}>
           {props.article.comment_count} comments <br></br>
         </Link>
@@ -30,3 +35,22 @@ export default function ArticleCard(props) {
     </div>
   );
 }
+
+//  {
+//    props.article.author === "weegembump" ? (
+//      <button
+//        onClick={props.deleteArticle(props.article.article_id)}
+//        value={props.article.comment_id}
+//        className="deleteButton"
+//      >
+//        {" "}
+//        Delete Article
+//      </button>
+//    ) : (
+//      <Voter
+//        key={`vot${props.article.comment_id}`}
+//        votes={props.article.votes}
+//        article_id={props.article.article_id}
+//      />
+//    );
+//  }
