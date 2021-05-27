@@ -90,7 +90,7 @@ a:hover {
   color: white;
   /* color: rgb(206, 233, 241); */
   justify-content: flex-start;
-  margin-left: 2rem;
+  margin: 2rem 8rem 2rem 0;
 }
 
 .Nav {
