@@ -71,7 +71,7 @@ a:hover {
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
-  margin-top: 0.25rem;
+  margin: 1.75rem 1rem 0;
 }
 .username {
   color: white;
@@ -82,7 +82,6 @@ a:hover {
   flex-direction: row;
   /* width: 100vhß; */
   /* border-bottom: 4px orange solid; */
-
   grid-area: title;
   background-color: rgb(241, 196, 113);
 }
@@ -90,7 +89,7 @@ a:hover {
   color: white;
   /* color: rgb(206, 233, 241); */
   justify-content: flex-start;
-  margin: 2rem 8rem 2rem 0;
+  margin: 2rem 8rem 2rem 1rem;
 }
 
 .Nav {
@@ -100,6 +99,8 @@ a:hover {
   padding: 1rem;
   background-color: rgb(206, 233, 241);
   justify-content: space-evenly;
+  width: auto;
+  height: auto;
 }
 /* .navLink {
   margin: 10px;
@@ -227,15 +228,13 @@ a:hover {
 
 .filterButton {
   transition-duration: 0.4s;
-
   background-color: rgb(133, 169, 223);
   color: white;
   border: rgb(133, 169, 223);
   height: 3rem;
   width: auto;
-  font-size: 1.2rem;
   border-radius: 12px;
-  margin: 0.5rem;
+  margin: 0.2rem;
 }
 
 .filterButton:hover {
@@ -299,6 +298,19 @@ a:hover {
   border: white;
   margin: 1rem;
 }
+
+@media only screen and (min-width: 350px) {
+  .Title {
+    height: 10rem;
+  }
+  .Title-header {
+    margin-top: 3rem;
+  }
+  .filterButton {
+    font-size: 0.9rem;
+  }
+}
+
 @media only screen and (min-width: 768px) {
   h1 {
     font-size: 4rem;
@@ -351,5 +363,11 @@ a:hover {
   }
   .Nav {
     width: 12rem;
+  }
+  .Title-header {
+    margin-left: 5rem;
+  }
+  .filterButton {
+    font-size: 1.5rem;
   }
 }
