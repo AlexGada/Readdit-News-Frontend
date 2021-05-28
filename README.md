@@ -1,88 +1,41 @@
-# Northcoders News
+# Readdit News
 
-> ALERT! Please **create your own empty repo** for NC News to avoid later issues with deploying and git histories. You should then use `create-react-app` and set the git remote using `git remote set-url origin your.new.git.url/here`.
+## Hosted application: https://readditnews.netlify.app/
 
-Northcoders News is a social news aggregation, web content rating, and discussion website. Think something along the lines of [Reddit](https://www.reddit.com/).
+## Hosted API: https://readdit-news.herokuapp.com/api
 
-Northcoders News has articles which are divided into topics. Each article has user curated ratings and can be up or down voted using the API. Users can also add comments about an article. Comments can also be up or down voted. A user can add comments and remove any comments which they have added.
+## Backend Repository: https://github.com/AlexGada/Readdit-News-Backend
 
-This review sprint should consolidate your understanding of making a [C.R.U.D](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) application from a front end perspective.
+---
 
- _Note: You will come across a Cross-Origin-Resource-Sharing error once you start fetching data from your back-end API, which will need a slight update: [Express CORS Middleware](https://expressjs.com/en/resources/middleware/cors.html)_
+Readdit News is a [Reddit](https://www.reddit.com/) style, social news aggregation, web content rating, and discussion website.
 
-## Objectives
+## Functionalities
 
-1. Pull together all the front-end skills, technologies and best practises you have learnt.
-2. Make asynchronous API calls to your own server.
-3. Use HTTP request types to interact with your backend, and HTTP response codes to update your UI accordingly.
+Readdit news has articles which are divided into topics.
 
-## What to do
+- A user can:
+  - View a list of all articles.
+    - Articles can be sorted by:
+      - Topic
+      - Date
+      - Number of comments
+      - Number of votes
+  - Up or down vote an article.
+  - View an individual article.
+  - View an individual articles comments.
+    - Comments can be sorted by:
+      - Date
+      - Number of votes
+    - Post a new comment on an existing article as the logged in user.
+    - Delete any comments posted by the logged in user.
+    - Up or down vote any comment apart from ones posted by the logged in user.
 
-Use the generic react-project-checklist as a guide to setting up your app. Here are some project-specific things to bear in mind:
+---
 
-1. Have a look at your API endpoints and at Reddit. Think about what data you have available, and how you will structure your application. What routes will your application have? What articles will you choose to display on the main page?
-2. Think how you will isolate the concerns of your project - the structure of your components, the sourcing of your data, the styling.
-3. What sort of routing does Reddit use? What sort of specificity do you think you will need? Remember, your urls don't have to directly correspond to your api endpoints, but they will provide some guidance.
-4. Think about what data each component will need. Where will it come from? When should components find their own data and when should they load it themselves? Focus on loading a list of articles for your front page first of all.
-5. Consider more complex functionality: how do you want to allow changes to your database? Think about how you will attribute users to posted comments etc. How will you know what comments/articles a user should be allowed to delete? How about sorting data, or paginating responses? A good starting point would be to pick a single user and assuming that all new articles and comments are being posted by that user.
-6. How are you going to make this a fluid and engaging experience for users, so they want to come back for more?
+## Setup
 
-## 'Must Have' User Stories
-
-You should implement the following functionality in your website. Check the lecture calendar to see when any new topics will be covered, but feel free to have a go at them beforehand as well!
-
-**Before moving onto the 'if time' and 'extra credit' sections of this readme, follow go to the Deployment section bellow, and then submit your code for review! Please send a link to both your GitHub project repository and your hosted website to your reviewer** 😀
-
-**As a user, I should be able to...**
-
-1. view a list of all articles
-2. view a page for each topic with a list of related articles.
-3. view an individual article.
-4. view an individual article's comments.
-5. sort articles by:
-   - date created
-   - comment_count
-   - votes
-6. post a new comment to an existing article (as a default logged in user. e.g. 'jessjelly').
-7. delete my own comments (as a default logged in user. e.g. 'jessjelly').
-8. vote on an article and immediately see the change.
-9. vote on a comment and immediately see the change.
-
-**Error-handling: As a user, I should...**
-
-10. see a 404 error if I go on a non-existent path/a path for a non-existent article/topic.
-11. see a 400 error if I go on a invalid article ID.
-12. not be allowed to post a comment if I have not filled in all of the form boxes.
-
-**As a hiring partner, I should be able to...**
-
-13. use the site on my mobile without sacrificing style or functionality (as I may not have my laptop nearby).
-14. follow the readme instructions to easily run the project locally.
-15. find a link to the hosted version of the project in the readme. (use a placeholder if not yet hosted!)
-16. find a link to the back-end repository of the project in the readme.
-17. find a link to the hosted version of the back-end project in the readme.
-
-## _If time, and if you have implemented it in your back-end API..._
-
-**As a user, I should be able to...**
-
-18. navigate over pages of articles (e.g. using pagination or infinite scroll).
-19. navigate over pages of comments (e.g. using pagination or infinite scroll).
-20. view a list of all articles written by any specific user.
-21. post a new article to an existing topic.
-22. delete my own articles.
-
-## Deployment
-
-There are many ways to deploy a React application. The `create-react-app` docs go into detail on some of the options: https://facebook.github.io/create-react-app/docs/deployment
-
-We recommend Netlify. Check out the `netlify-deployment.md` file in this repo for a step-by-step guide!
-
-## Extra credit - what else do you think would be good for a user to be able to do, here are a couple of suggestions:
-
-1. As a user, I should be able to see which users have been most active adding articles and comments
-2. As a user, I should be able to sort the users by how popular they are based on an aggregation of their article and comment vote counts
-
-## Important
-
-This sprint is among the ones we'll ask you to complete in order to put you forward for jobs. Put a little bit of love into it! :) <3
+- Fork and clone this repository.
+- Open it up and run `npm install `
+- Once the download has completed, run `npm start `
+  - This runs the app in development mode, opening up a tab on http://localhost:3000 in the browser.
