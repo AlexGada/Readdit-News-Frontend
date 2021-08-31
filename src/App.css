@@ -61,7 +61,6 @@ a:hover {
   padding: 30rem;
 }
 .avatar {
-  /* justify-content: space-evenly; */
   position: absolute;
   right: 0;
   color: white;
@@ -80,14 +79,11 @@ a:hover {
 .Title {
   display: flex;
   flex-direction: row;
-  /* width: 100vhß; */
-  /* border-bottom: 4px orange solid; */
   grid-area: title;
   background-color: rgb(241, 196, 113);
 }
 .Title-header {
   color: white;
-  /* color: rgb(206, 233, 241); */
   justify-content: flex-start;
   margin: 2rem 8rem 2rem 1rem;
 }
@@ -102,17 +98,10 @@ a:hover {
   width: auto;
   height: auto;
 }
-/* .navLink {
-  margin: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-} */
 .Content {
   grid-area: content;
 }
 .filters {
-  /* display: flex;
-  flex-direction: row; */
   justify-content: space-evenly;
 }
 .singleArticle {
@@ -121,7 +110,6 @@ a:hover {
   justify-content: center;
   align-items: center;
   margin: 1rem;
-  /* border: 4px solid purple; */
 }
 .singleArticleBody {
   display: grid;
@@ -164,7 +152,6 @@ a:hover {
   padding: 1rem;
 }
 .ArticleCardMain {
-  /* border: 4px rgb(97, 191, 210) solid; */
   grid-area: main;
 }
 .ArticleCardSmall {
@@ -178,8 +165,6 @@ a:hover {
   flex-direction: column;
 }
 
-/* .singleArticle {
-} */
 .CommentList {
   display: flex;
   flex-direction: column;
@@ -330,7 +315,6 @@ a:hover {
   }
 
   .App {
-    /* grid-template-columns: 1fr 6fr; */
     grid-template-areas:
       "title title"
       "nav content";
@@ -346,7 +330,6 @@ a:hover {
   }
   .ArticleCard {
     width: 70%;
-    /* position: center; */
   }
   .singleArticleBody {
     width: 70%;
